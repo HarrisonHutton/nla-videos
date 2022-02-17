@@ -35,8 +35,11 @@ class MatrixVectorMult(Scene):
         self.wait()
         self.play(MoveToTarget(x_vec))
 
+        # Not currently aligned correctly
+        # Possibly add both x and A to VGroup and align them inside this
         a_mat = MathTex(r"A \in \mathbb{C}^{m \times n}", font_size = 144)
         a_mat.animate.shift(UP*1.5 + LEFT*4.8).scale(0.6)
+
         self.play(Write(a_mat))
         self.wait()
         self.play(
