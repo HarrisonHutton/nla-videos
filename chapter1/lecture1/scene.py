@@ -15,7 +15,7 @@ class Thumbnail(Scene):
 
         title.set_color_by_gradient(RED, ORANGE)
         title.shift(UP*1.4)
-        
+
         self.add(book, title, tex)
 
 """
@@ -28,12 +28,18 @@ class MatrixVectorMult(Scene):
             r"\usepackage{amsfonts}"
         )
 
-        tex = MathTex(r"x \in \mathbb{C}^n", font_size = 144)
-        tex.animate.shift(UP*3 + LEFT*4.8).scale(0.6)
-        self.play(Write(tex))
+        x_vec = MathTex(r"x \in \mathbb{C}^n", font_size = 144)
+        x_vec.animate.shift(UP*3 + LEFT*4.8).scale(0.6)
 
-        # Add comma after C^n to make way for the next vector
-
+        self.play(Write(x_vec))
         self.wait()
+        self.play(MoveToTarget(x_vec))
 
-        self.play(MoveToTarget(tex))
+        a_mat = MathTex(r"A \in \mathbb{C}^{m \times n}", font_size = 144)
+        a_mat.animate.shift(UP*1.5 + LEFT*4.8).scale(0.6)
+        self.play(Write(a_mat))
+        self.wait()
+        self.play(
+            MoveToTarget(a_mat)
+        )
+        self.wait()
