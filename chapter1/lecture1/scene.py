@@ -1,3 +1,4 @@
+from ctypes import alignment
 from manim import *
 config.background_color = "#191919"
 
@@ -21,28 +22,35 @@ class Thumbnail(Scene):
 """
 Matrix-vector multiplication videos
 """
-class MatrixVectorMult(Scene):
+class Goal(Scene):
     def construct(self):
+        goal = Text("Goal:", font_size=80)\
+            .to_corner(LEFT + UP)\
+            .set_color_by_gradient("#11DA28", "#4FE560")
+        self.play(Write(goal))
+        self.wait(1.5)
+        
         tex_template = TexTemplate()
         tex_template.add_to_preamble(
             r"\usepackage{amsfonts}"
         )
 
-        x_vec = MathTex(r"x \in \mathbb{C}^n", font_size = 144)
-        x_vec.animate.shift(UP*3 + LEFT*4.8).scale(0.6)
+        x_vec = MathTex(r"x", r"\in \mathbb{C}^n", font_size = 144)
+        x_vec.animate.shift(UP*2 + LEFT*4.8).scale(0.6)
 
         self.play(Write(x_vec))
         self.wait()
+        self.play(Indicate(x_vec[0], color=BLUE))
         self.play(MoveToTarget(x_vec))
 
         # Not currently aligned correctly
         # Possibly add both x and A to VGroup and align them inside this
-        a_mat = MathTex(r"A \in \mathbb{C}^{m \times n}", font_size = 144)
-        a_mat.animate.shift(UP*1.5 + LEFT*4.8).scale(0.6)
+        a_mat = MathTex(r"A", r"\in \mathbb{C}^{m \times n}", font_size = 144)
+        a_mat.animate.scale(0.6).next_to(x_vec, DOWN, aligned_edge=LEFT, buff=0.4).shift(LEFT*0.15)
 
         self.play(Write(a_mat))
         self.wait()
-        self.play(
-            MoveToTarget(a_mat)
-        )
+        self.play(Indicate(a_mat[0], color=BLUE))
+        self.play(MoveToTarget(a_mat))
         self.wait()
+        
