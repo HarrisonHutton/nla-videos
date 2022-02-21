@@ -53,4 +53,10 @@ class Goal(Scene):
         self.play(Indicate(a_mat[0], color=BLUE))
         self.play(MoveToTarget(a_mat))
         self.wait()
+
+        self.play(
+            x_vec[0].animate.set_color(BLUE),
+            a_mat[0].animate.set_color(BLUE)
+        )
+        self.wait()
         
