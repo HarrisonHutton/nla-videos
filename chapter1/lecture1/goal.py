@@ -2,7 +2,7 @@ from manim import *
 # config.background_color = "#191919"
 
 def set_background(self):
-    rect = FullScreenRectangle(fill_opacity = .5, stroke_width = 0).set_color([BLUE, PURPLE])
+    rect = FullScreenRectangle(fill_opacity = .4, stroke_width = 0).set_color([BLUE, PURPLE])
     self.add(rect)
 
 class Goal(Scene):
@@ -40,9 +40,13 @@ class Goal(Scene):
         move_A = product[0][2].copy()
         og_A = implication_2[1].copy().set_color(RED)
 
+        # Text to turn pink
+        lin_combo_text = implication_1[1][3:-2]
+
         self.play(
             TransformFromCopy(move_b, og_b , path_arc = 80*DEGREES, run_time = 1.5),
-            TransformFromCopy(move_A, og_A , path_arc = 80*DEGREES, run_time = 1.5)
+            TransformFromCopy(move_A, og_A , path_arc = 80*DEGREES, run_time = 1.5),
+            FadeToColor(lin_combo_text, "#F55AFF", run_time = 1.5)
         )
         self.remove(implication_1[0], implication_2[1])
         self.wait(3)
