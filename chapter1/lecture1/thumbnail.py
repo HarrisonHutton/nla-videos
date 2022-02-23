@@ -1,10 +1,15 @@
 from manim import *
 
+def set_background(self):
+    rect = FullScreenRectangle(fill_opacity = .4, stroke_width = 0).set_color([BLUE, PURPLE])
+    self.add(rect)
+
 """
 Video thumbnail
 """
 class Thumbnail(Scene):
     def construct(self):
+        set_background(self)
         book = Text("Numerical Linear Algebra", font_size = 80)
         title = Text("Matrix-Vector Multiplication", font_size = 54)
         tex = MathTex(r"b=Ax", font_size = 280, color=GOLD).shift(DOWN*0.7)
