@@ -44,4 +44,5 @@ class Goal(Scene):
             TransformFromCopy(move_b, og_b , path_arc = 80*DEGREES, run_time = 1.5),
             TransformFromCopy(move_A, og_A , path_arc = 80*DEGREES, run_time = 1.5)
         )
+        self.remove(implication_1[0], implication_2[1])
         self.wait(3)
