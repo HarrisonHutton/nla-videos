@@ -9,8 +9,8 @@ class Goal(Scene):
     def construct(self):
         set_background(self)
         goal = Text("Learning Goal:", font_size=80)\
-            .to_corner(LEFT + UP)\
-            .set_color_by_gradient("#11DA28", "#5AFF6D")
+            .to_corner(LEFT + UP)
+            # .set_color_by_gradient("#11DA28", "#5AFF6D")
         self.play(Write(goal))
         self.wait(1.5)
 
@@ -25,7 +25,7 @@ class Goal(Scene):
         implication_1 = Tex(r"$b$", r" is a linear combination of", font_size = 80)
         implication_1.next_to(to, RIGHT)
         implication_2 = Tex(r" the columns of ", r"$A$", r".", font_size = 80)
-        implication_2.next_to(to, DOWN, aligned_edge = LEFT)
+        implication_2.next_to(implication_1, DOWN, aligned_edge = LEFT)
         imp_group = VGroup(implication_1, implication_2)
 
         self.play(Write(product))
